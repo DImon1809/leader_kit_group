@@ -44,8 +44,10 @@ export const HowWeWork = () => {
           {STEPS.map((step) => (
             <div key={step.number} className={styles.howWeWork__step}>
               <span className={styles.howWeWork__number}>{step.number}</span>
-              <h3 className={styles.howWeWork__stepTitle}>{step.title}</h3>
-              <p className={styles.howWeWork__stepText}>{step.text}</p>
+              <div className={styles.howWeWork__stepBody}>
+                <h3 className={styles.howWeWork__stepTitle}>{step.title}</h3>
+                <p className={styles.howWeWork__stepText}>{step.text}</p>
+              </div>
             </div>
           ))}
         </div>

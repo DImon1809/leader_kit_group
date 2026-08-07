@@ -2,6 +2,7 @@
   width: 100%;
   padding-top: 84px;
   background-color: #f8f8fb;
+  position: relative;
 
   &__banner {
     position: relative;
@@ -9,9 +10,11 @@
   }
 
   &__bannerImage {
-    width: 100%;
-    height: auto;
-    display: block;
+    display: none;
+  }
+
+  &__overlay {
+    padding: 32px 0 24px;
   }
 
   &__content {
@@ -19,8 +22,7 @@
   }
 
   &__chips {
-    margin-top: 24px;
-    padding: 20px 0 32px;
+    padding: 24px 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -110,48 +112,47 @@
   }
 
   @media (min-width: 860px) {
-    height: 700px;
+    min-height: clamp(646px, 9.55vw + 564px, 688px);
 
     &__banner {
       max-width: 1920px;
-      height: 100%;
       margin: 0 auto;
+      min-height: clamp(646px, 9.55vw + 564px, 688px);
     }
 
     &__bannerImage {
+      display: block;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
-      width: 850px;
-      height: 700px;
+      width: clamp(300px, 102.27vw - 580px, 750px);
+      height: 100%;
       margin-left: 0;
       object-fit: contain;
-      object-position: right center;
+      object-position: right top;
     }
 
     &__overlay {
-      padding: 56px 24px 48px;
+      width: 100%;
+      padding: 56px 24px;
+    }
+
+    &__content {
+      max-width: 480px;
     }
 
     &__chips {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 24px;
-      margin-top: 0;
-      padding: 0 24px 0 160px;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      background-color: transparent;
+      left: max(24px, calc((100% - 1240px) / 2 + 24px));
+      bottom: 90px;
+      width: fit-content;
+      padding: 0 24px 0 0;
+      display: flex;
+      gap: 44px;
+      background-color: #f8f8fb;
     }
 
-    &__title {
-      font-size: 40px;
-    }
-  }
-
-  @media (min-width: 1200px) {
     &__title {
       font-size: 40px;
     }
@@ -160,6 +161,33 @@
   @media (max-width: 900px) {
     &__chips {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 859px) {
+    &__content {
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    &__chips {
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, max-content);
+      justify-content: start;
+      gap: 24px 48px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    &__overlay {
+      padding: 32px 20px 24px;
+    }
+
+    &__chips {
+      justify-content: center;
     }
   }
 
@@ -180,12 +208,15 @@
     }
 
     &__chips {
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-top: 10px;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 18px;
     }
 
     &__chip {
-      padding: 14px;
+      padding: 0;
     }
   }
 }

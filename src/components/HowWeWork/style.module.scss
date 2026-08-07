@@ -96,10 +96,27 @@
   @media (max-width: 460px) {
     &__grid {
       grid-template-columns: 1fr;
+      row-gap: 28px;
     }
 
-    &__step::before {
-      display: none;
+    &__step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding-top: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__number {
+      flex-shrink: 0;
+      margin-bottom: 0;
+    }
+
+    &__stepText {
+      max-width: none;
     }
   }
 }

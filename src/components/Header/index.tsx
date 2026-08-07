@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, Menu, Phone, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import logoMark from "../../assets/logo-mark.png";
 import styles from "./style.module.scss";
@@ -19,9 +20,16 @@ const NAV_ITEMS: NavItem[] = [
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavClick = (id: string) => {
     setIsOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate(id === "#top" ? "/" : `/${id}`);
+      return;
+    }
 
     if (id === "#top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -32,17 +40,25 @@ export const Header = () => {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleLogoClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setIsOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__inner}`}>
         <a
-          href="#"
+          href="/"
           className={styles.header__logo}
-          onClick={(event) => {
-            event.preventDefault();
-            setIsOpen(false);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+          onClick={handleLogoClick}
         >
           <img
             src={logoMark}

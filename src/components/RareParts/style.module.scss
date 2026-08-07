@@ -6,6 +6,26 @@
   background-position: center 62%;
   background-repeat: no-repeat;
   overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(15, 32, 56, 0.92) 0%,
+      rgba(15, 32, 56, 0.8) 30%,
+      rgba(15, 32, 56, 0.35) 55%,
+      rgba(15, 32, 56, 0) 75%
+    );
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
 
   &__content {
     max-width: 560px;
@@ -53,6 +73,10 @@
 
   @media (max-width: 760px) {
     padding: 64px 0 96px;
+
+    &::before {
+      background: rgba(15, 32, 56, 0.82);
+    }
 
     &__title {
       font-size: 26px;
