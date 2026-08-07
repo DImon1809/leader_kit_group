@@ -1,0 +1,136 @@
+.catalog {
+  width: 100%;
+  padding: 72px 0;
+  background-color: var(--color-white);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+    transition: gap 0.2s ease;
+
+    &:hover {
+      gap: 10px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    box-shadow: 0 2px 12px -4px rgba(26, 61, 109, 0.12);
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 16px 32px -12px rgba(26, 61, 109, 0.28);
+      transform: translateY(-4px);
+
+      .catalog__cardArrow {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__cardImage {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+
+    img {
+      display: block;
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+  }
+
+  &__cardTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+
+  &__cardText {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    flex: 1;
+  }
+
+  &__cardArrow {
+    align-self: flex-end;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    background-color: var(--color-bg-light);
+    color: var(--color-primary);
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+
+  @media (max-width: 1000px) {
+    &__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    padding: 48px 0;
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

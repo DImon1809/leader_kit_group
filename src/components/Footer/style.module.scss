@@ -1,0 +1,134 @@
+.footer {
+  width: 100%;
+  padding: 18px 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  &__logoIcon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__logoText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  &__logoTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  &__logoSubtitle {
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  &__divider {
+    width: 1px;
+    height: 32px;
+    background-color: var(--color-border);
+    flex-shrink: 0;
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-right: auto;
+  }
+
+  &__copyright {
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+
+  &__policy {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  &__contactLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    transition: color 0.2s ease;
+
+    svg {
+      color: var(--color-accent);
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  @media (max-width: 860px) {
+    &__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    &__legal {
+      margin-right: 0;
+    }
+
+    &__divider {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    &__legal,
+    &__contacts {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+}

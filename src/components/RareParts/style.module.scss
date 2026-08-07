@@ -1,0 +1,79 @@
+.rareParts {
+  width: 100%;
+  padding: 88px 0 130px 0;
+  background-color: #0f2038;
+  background-size: cover;
+  background-position: center 62%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &__content {
+    max-width: 560px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-white);
+    max-width: 520px;
+  }
+
+  &__text {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 480px;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+    height: 52px;
+    padding: 0 28px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background-color: var(--color-accent);
+      color: var(--color-white);
+    }
+  }
+
+  @media (max-width: 760px) {
+    padding: 64px 0 96px;
+
+    &__title {
+      font-size: 26px;
+      max-width: none;
+    }
+
+    &__text {
+      font-size: 14px;
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 48px 0 72px;
+
+    &__title {
+      font-size: 22px;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}

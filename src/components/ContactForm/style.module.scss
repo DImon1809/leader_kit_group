@@ -1,0 +1,138 @@
+.contactForm {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #0f2038;
+  background-size: cover;
+  background-position: center;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 40px;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-white);
+    max-width: 440px;
+  }
+
+  &__text {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 560px;
+  }
+
+  &__benefits {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__benefit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-white);
+    white-space: nowrap;
+
+    svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      padding: 3px;
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border-radius: 999px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 40px;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    height: fit-content;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--color-white);
+    transition: border-color 0.2s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      border-color: var(--color-accent);
+    }
+  }
+
+  &__submit {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #2f5490;
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    &__title,
+    &__text {
+      max-width: none;
+    }
+
+    &__form {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+
+  @media (max-width: 520px) {
+    padding: 40px 0;
+
+    &__title {
+      font-size: 26px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+    }
+  }
+}

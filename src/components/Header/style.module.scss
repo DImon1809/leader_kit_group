@@ -1,0 +1,256 @@
+.header {
+  width: 100%;
+  height: 84px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  position: fixed;
+  top: 0;
+  z-index: 20;
+
+  &__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+
+  &__logoIcon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 44px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__logoText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  &__logoTitle {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  &__logoSubtitle {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: nowrap;
+  }
+
+  &__navLink {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__navFooter {
+    display: none;
+  }
+
+  &__contactsDesktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  &__phoneDesktop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    svg {
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+  }
+
+  &__emailDesktop {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    svg {
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+  }
+
+  &__ctaDesktop {
+    flex-shrink: 0;
+    height: 44px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &__burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 1180px) {
+    &__navList {
+      display: none;
+    }
+
+    &__contactsDesktop {
+      display: none;
+    }
+
+    &__ctaDesktop {
+      display: none;
+    }
+
+    &__burger {
+      display: flex;
+    }
+
+    &__nav {
+      position: fixed;
+      top: 84px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-white);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      padding: 24px;
+      z-index: 19;
+
+      &--open {
+        transform: translateX(0);
+      }
+    }
+
+    &__navList {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    &__navLink {
+      width: 100%;
+      padding: 14px 4px;
+      font-size: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    &__navFooter {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    &__phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      font-weight: 600;
+
+      svg {
+        color: var(--color-primary);
+      }
+    }
+
+    &__email {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+
+      svg {
+        color: var(--color-primary);
+      }
+    }
+
+    &__cta {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 64px;
+
+    &__logoIcon {
+      width: 34px;
+      height: 38px;
+    }
+
+    &__logoTitle {
+      font-size: 13px;
+    }
+
+    &__logoSubtitle {
+      font-size: 10px;
+    }
+
+    &__nav {
+      top: 64px;
+    }
+  }
+}

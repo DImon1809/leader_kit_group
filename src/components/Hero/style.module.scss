@@ -1,0 +1,191 @@
+.hero {
+  width: 100%;
+  padding-top: 84px;
+  background-color: #f8f8fb;
+
+  &__banner {
+    position: relative;
+    width: 100%;
+  }
+
+  &__bannerImage {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__content {
+    max-width: 540px;
+  }
+
+  &__chips {
+    margin-top: 24px;
+    padding: 20px 0 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    background-color: #f8f8fb;
+  }
+
+  &__chip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 1 auto;
+  }
+
+  &__chipIcon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+  }
+
+  &__chipText {
+    max-width: 140px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-text);
+  }
+
+  &__title {
+    font-size: 34px;
+    line-height: 1.18;
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  &__text {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 520px;
+  }
+
+  &__actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__buttonPrimary {
+    height: 52px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &__buttonSecondary {
+    height: 52px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
+  @media (min-width: 860px) {
+    height: 700px;
+
+    &__banner {
+      max-width: 1920px;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    &__bannerImage {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 850px;
+      height: 700px;
+      margin-left: 0;
+      object-fit: contain;
+      object-position: right center;
+    }
+
+    &__overlay {
+      padding: 56px 24px 48px;
+    }
+
+    &__chips {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      margin-top: 0;
+      padding: 0 24px 0 160px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background-color: transparent;
+    }
+
+    &__title {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    &__title {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__chips {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 64px;
+
+    &__title {
+      font-size: 26px;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__buttonPrimary,
+    &__buttonSecondary {
+      width: 100%;
+    }
+
+    &__chips {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    &__chip {
+      padding: 14px;
+    }
+  }
+}
