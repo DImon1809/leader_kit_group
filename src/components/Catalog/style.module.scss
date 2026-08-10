@@ -47,17 +47,29 @@
     border-radius: var(--radius-m);
     box-shadow: 0 2px 12px -4px rgba(26, 61, 109, 0.12);
     transition: all 0.2s ease;
+    opacity: 0;
+    translate: 0 28px;
 
     &:hover {
       border-color: var(--color-primary);
       box-shadow: 0 16px 32px -12px rgba(26, 61, 109, 0.28);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
 
       .catalog__cardArrow {
         background-color: var(--color-primary);
         color: var(--color-white);
+        transform: translateX(3px);
+      }
+
+      .catalog__cardImage img {
+        transform: scale(1.1) rotate(-2deg);
       }
     }
+  }
+
+  &__grid--visible &__card {
+    animation: catalogCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 0.08s);
   }
 
   &__cardImage {
@@ -67,12 +79,14 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
+    overflow: hidden;
 
     img {
       display: block;
       width: 70%;
       height: 70%;
       object-fit: contain;
+      transition: transform 0.35s ease;
     }
   }
 
@@ -132,5 +146,16 @@
     &__grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+@keyframes catalogCardIn {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }

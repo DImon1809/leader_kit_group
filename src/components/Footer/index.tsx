@@ -1,11 +1,17 @@
 import { Mail, Phone } from "lucide-react";
 
 import logoMark from "../../assets/logo-mark.png";
+import { useReveal } from "../../hooks/useReveal";
 import styles from "./style.module.scss";
 
 export const Footer = () => {
+  const { ref, visible } = useReveal<HTMLElement>({ threshold: 0.05 });
+
   return (
-    <footer className={styles.footer}>
+    <footer
+      ref={ref}
+      className={`${styles.footer} ${visible ? styles["footer--visible"] : ""}`}
+    >
       <div className={`container ${styles.footer__inner}`}>
         <div className={styles.footer__logo}>
           <span className={styles.footer__logoIcon}>

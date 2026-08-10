@@ -1,6 +1,7 @@
 import { LayoutGrid, ShieldCheck, Truck, Users, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+import { useReveal } from "../../hooks/useReveal";
 import styles from "./style.module.scss";
 
 type Advantage = {
@@ -38,14 +39,25 @@ const ADVANTAGES: Advantage[] = [
 ];
 
 export const Advantages = () => {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+
   return (
     <section id="advantages" className={styles.advantages}>
       <div className="container">
         <h2 className={styles.advantages__title}>Наши преимущества</h2>
 
-        <div className={styles.advantages__grid}>
-          {ADVANTAGES.map(({ icon: Icon, title, text }) => (
-            <div key={title} className={styles.advantages__card}>
+        <div
+          ref={ref}
+          className={`${styles.advantages__grid} ${
+            visible ? styles["advantages__grid--visible"] : ""
+          }`}
+        >
+          {ADVANTAGES.map(({ icon: Icon, title, text }, index) => (
+            <div
+              key={title}
+              className={styles.advantages__card}
+              style={{ "--i": index } as React.CSSProperties}
+            >
               <span className={styles.advantages__icon}>
                 <Icon size={24} strokeWidth={1.8} />
               </span>

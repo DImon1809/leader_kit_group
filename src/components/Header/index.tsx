@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Menu, Phone, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -18,10 +18,36 @@ const NAV_ITEMS: NavItem[] = [
   { text: "Контакты", id: "#contacts" },
 ];
 
+const LOGO_TITLE = "Лидер Комплект Групп";
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [typedTitle, setTypedTitle] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    let charCount = 0;
+    const id = setInterval(() => {
+      charCount += 1;
+      setTypedTitle(LOGO_TITLE.slice(0, charCount));
+      if (charCount >= LOGO_TITLE.length) {
+        clearInterval(id);
+        setIsTyping(false);
+      }
+    }, 45);
+
+    return () => clearInterval(id);
+  }, []);
 
   const handleNavClick = (id: string) => {
     setIsOpen(false);
@@ -53,7 +79,11 @@ export const Header = () => {
   };
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${
+        isScrolled ? styles["header--scrolled"] : ""
+      }`}
+    >
       <div className={`container ${styles.header__inner}`}>
         <a
           href="/"
@@ -66,7 +96,10 @@ export const Header = () => {
             className={styles.header__logoIcon}
           />
           <span className={styles.header__logoText}>
-            <span className={styles.header__logoTitle}>Лидер Комплект Групп</span>
+            <span className={styles.header__logoTitle}>
+              {typedTitle}
+              {isTyping && <span className={styles.header__logoCaret} />}
+            </span>
             <span className={styles.header__logoSubtitle}>
               Промышленные решения
             </span>
@@ -79,8 +112,12 @@ export const Header = () => {
           }`}
         >
           <ul className={styles.header__navList}>
-            {NAV_ITEMS.map((item) => (
-              <li key={item.text} className={styles.header__navItem}>
+            {NAV_ITEMS.map((item, index) => (
+              <li
+                key={item.text}
+                className={styles.header__navItem}
+                style={{ "--i": index } as React.CSSProperties}
+              >
                 <button
                   type="button"
                   className={styles.header__navLink}

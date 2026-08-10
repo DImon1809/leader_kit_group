@@ -3,6 +3,7 @@ import { ArrowLeft, PackageSearch, Search } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 import { CATALOG_ITEMS, getCategoryBySlug } from "../../data/catalog";
+import { useReveal } from "../../hooks/useReveal";
 import styles from "./style.module.scss";
 
 const highlightMatch = (text: string, query: string) => {
@@ -26,6 +27,7 @@ export const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const category = getCategoryBySlug(slug);
   const [query, setQuery] = useState("");
+  const { ref: otherRef, visible: otherVisible } = useReveal<HTMLDivElement>();
 
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -99,7 +101,7 @@ export const CategoryPage = () => {
         </div>
 
         <ul className={styles.categoryPage__list}>
-          {category.products.map((product) => {
+          {category.products.map((product, index) => {
             const isMatch =
               normalizedQuery.length > 0 &&
               (product.name.toLowerCase().includes(normalizedQuery) ||
@@ -115,6 +117,7 @@ export const CategoryPage = () => {
                     ? styles["categoryPage__item--dimmed"]
                     : ""
                 }`}
+                style={{ "--i": index } as React.CSSProperties}
               >
                 <span className={styles.categoryPage__itemIcon}>
                   <PackageSearch size={18} />
@@ -135,13 +138,19 @@ export const CategoryPage = () => {
 
       <div className={`container ${styles.categoryPage__otherCategories}`}>
         <h2 className={styles.categoryPage__otherTitle}>Другие категории</h2>
-        <div className={styles.categoryPage__otherGrid}>
+        <div
+          ref={otherRef}
+          className={`${styles.categoryPage__otherGrid} ${
+            otherVisible ? styles["categoryPage__otherGrid--visible"] : ""
+          }`}
+        >
           {CATALOG_ITEMS.filter((item) => item.slug !== category.slug).map(
-            (item) => (
+            (item, index) => (
               <Link
                 to={`/catalog/${item.slug}`}
                 key={item.slug}
                 className={styles.categoryPage__otherCard}
+                style={{ "--i": index } as React.CSSProperties}
               >
                 <img src={item.image} alt={item.title} />
                 <span>{item.title}</span>

@@ -4,12 +4,37 @@
   background-color: #0f2038;
   background-size: cover;
   background-position: center;
+  overflow-x: hidden;
 
   &__inner {
     display: grid;
     grid-template-columns: 1fr 440px;
     gap: 40px;
     align-items: center;
+
+    .contactForm__info {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .contactForm__form {
+      opacity: 0;
+      transform: translateX(28px);
+      transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+    }
+
+    &--visible {
+      .contactForm__info,
+      .contactForm__form {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   }
 
   &__title {
@@ -79,7 +104,10 @@
     border-radius: 6px;
     font-size: 13px;
     color: var(--color-white);
-    transition: border-color 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.5);
@@ -87,6 +115,8 @@
 
     &:focus {
       border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(61, 107, 179, 0.28);
+      transform: translateY(-1px);
     }
   }
 
@@ -100,10 +130,19 @@
     font-size: 14px;
     font-weight: 700;
     border-radius: 6px;
-    transition: background-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:hover {
       background-color: #2f5490;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -12px rgba(61, 107, 179, 0.7);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
     }
   }
 

@@ -6,6 +6,15 @@
   position: fixed;
   top: 0;
   z-index: 20;
+  box-shadow: 0 0 0 rgba(15, 32, 56, 0);
+  transition:
+    box-shadow 0.3s ease,
+    height 0.3s ease;
+
+  &--scrolled {
+    height: 72px;
+    box-shadow: 0 8px 24px -16px rgba(15, 32, 56, 0.35);
+  }
 
   &__inner {
     height: 100%;
@@ -20,6 +29,15 @@
     gap: 10px;
     margin-right: auto;
     flex-shrink: 0;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 
   &__logoIcon {
@@ -28,6 +46,11 @@
     height: 44px;
     object-fit: contain;
     object-position: center;
+    transition: transform 0.3s ease;
+
+    .header__logo:hover & {
+      transform: rotate(-6deg);
+    }
   }
 
   &__logoText {
@@ -43,10 +66,23 @@
     white-space: nowrap;
   }
 
+  &__logoCaret {
+    display: inline-block;
+    width: 2px;
+    height: 0.9em;
+    margin-left: 2px;
+    background-color: var(--color-primary);
+    vertical-align: text-bottom;
+    animation: logoCaretBlink 0.6s step-end infinite;
+  }
+
   &__logoSubtitle {
     font-size: 12px;
     color: var(--color-text-muted);
     white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: logoSubtitleIn 0.45s ease 0.85s forwards;
   }
 
   &__navList {
@@ -57,14 +93,33 @@
   }
 
   &__navLink {
+    position: relative;
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text);
     white-space: nowrap;
     transition: color 0.2s ease;
 
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-primary);
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
     &:hover {
       color: var(--color-primary);
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 
@@ -137,6 +192,15 @@
     align-items: center;
     justify-content: center;
     color: var(--color-text);
+    transition: transform 0.25s ease;
+
+    &:active {
+      transform: scale(0.85) rotate(-8deg);
+    }
+
+    svg {
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
   }
 
   @media (max-width: 1180px) {
@@ -166,11 +230,17 @@
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 24px;
       z-index: 19;
 
       &--open {
         transform: translateX(0);
+
+        .header__navItem {
+          animation: navItemIn 0.4s ease forwards;
+          animation-delay: calc(var(--i, 0) * 0.06s + 0.05s);
+        }
       }
     }
 
@@ -181,11 +251,21 @@
       gap: 4px;
     }
 
+    &__navItem {
+      width: 100%;
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+
     &__navLink {
       width: 100%;
       padding: 14px 4px;
       font-size: 16px;
       border-bottom: 1px solid var(--color-border);
+
+      &::after {
+        display: none;
+      }
     }
 
     &__navFooter {
@@ -252,5 +332,33 @@
     &__nav {
       top: 64px;
     }
+  }
+}
+
+@keyframes navItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes logoCaretBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoSubtitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

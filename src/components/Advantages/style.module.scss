@@ -21,6 +21,23 @@
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-m);
+    opacity: 0;
+    translate: 0 28px;
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 16px 32px -16px rgba(26, 61, 109, 0.28);
+      transform: translateY(-6px);
+    }
+  }
+
+  &__grid--visible &__card {
+    animation: advantageIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 0.09s);
   }
 
   &__icon {
@@ -33,6 +50,13 @@
     color: var(--color-primary);
     border-radius: 12px;
     margin-bottom: 18px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    .advantages__card:hover & {
+      transform: scale(1.1) rotate(-4deg);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
   }
 
   &__cardTitle {
@@ -70,5 +94,16 @@
     &__grid {
       grid-template-columns: 1fr;
     }
+  }
+}
+
+@keyframes advantageIn {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }

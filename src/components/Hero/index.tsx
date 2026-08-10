@@ -65,8 +65,12 @@ export const Hero = () => {
       </div>
 
       <div className={`container ${styles.hero__chips}`}>
-        {FEATURES.map(({ icon: Icon, text }) => (
-          <div key={text} className={styles.hero__chip}>
+        {FEATURES.map(({ icon: Icon, text }, index) => (
+          <div
+            key={text}
+            className={styles.hero__chip}
+            style={{ "--i": index } as React.CSSProperties}
+          >
             <span className={styles.hero__chipIcon}>
               <Icon size={45} strokeWidth={1.6} />
             </span>
