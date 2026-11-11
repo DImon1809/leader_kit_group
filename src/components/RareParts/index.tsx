@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-import rarePartsBanner from "../../assets/rare-parts-banner.png";
+import rarePartsBanner from "../../assets/rare-parts-banner.webp";
 import { useReveal } from "../../hooks/useReveal";
 import styles from "./style.module.scss";
 

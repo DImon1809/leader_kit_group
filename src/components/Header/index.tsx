@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Mail, Menu, Phone, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import logoMark from "../../assets/logo-mark.png";
+import logoMark from "../../assets/logo-mark.webp";
 import styles from "./style.module.scss";
 
 type NavItem = {
@@ -130,9 +130,9 @@ export const Header = () => {
           </ul>
 
           <div className={styles.header__navFooter}>
-            <a href="tel:+74951234567" className={styles.header__phone}>
+            <a href="tel:+74912300088" className={styles.header__phone}>
               <Phone size={16} />
-              +7 (495) 123-45-67
+              +7 (4912) 30-00-88
             </a>
             <a href="mailto:info@liderkg.ru" className={styles.header__email}>
               <Mail size={16} />
@@ -149,9 +149,9 @@ export const Header = () => {
         </nav>
 
         <div className={styles.header__contactsDesktop}>
-          <a href="tel:+74951234567" className={styles.header__phoneDesktop}>
+          <a href="tel:+74912300088" className={styles.header__phoneDesktop}>
             <Phone size={16} />
-            +7 (495) 123-45-67
+            +7 (4912) 30-00-88
           </a>
           <a href="mailto:info@liderkg.ru" className={styles.header__emailDesktop}>
             <Mail size={16} />

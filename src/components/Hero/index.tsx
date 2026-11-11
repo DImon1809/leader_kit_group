@@ -1,7 +1,7 @@
 import { BadgeCheck, Package, SearchCheck, Truck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import heroPhoto from "../../assets/hero-banner-photo-v2.png";
+import heroPhoto from "../../assets/hero-banner-photo-v2.webp";
 import styles from "./style.module.scss";
 
 type FeatureItem = {
@@ -52,13 +52,13 @@ export const Hero = () => {
               >
                 Подобрать оборудование
               </button>
-              <button
-                type="button"
+              <a
+                href="/catalog.pdf"
+                download="Лидер-Комплект-Групп-Каталог.pdf"
                 className={styles.hero__buttonSecondary}
-                onClick={() => scrollTo("#catalog")}
               >
                 Скачать каталог
-              </button>
+              </a>
             </div>
           </div>
         </div>

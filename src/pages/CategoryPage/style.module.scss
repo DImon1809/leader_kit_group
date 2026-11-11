@@ -314,6 +314,13 @@
     &__search {
       max-width: none;
     }
+
+    &__bannerInner:global(.container),
+    &__body:global(.container),
+    &__otherCategories:global(.container) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 }
 

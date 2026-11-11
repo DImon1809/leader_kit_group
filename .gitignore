@@ -6,12 +6,19 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+Референсы для сайта 2 каталог
 Референсы для сайта
 
 node_modules
-dist
+
 dist-ssr
 *.local
+.env
+.env.example
+
+scratchpad
+scripts
+server
 
 # Editor directories and files
 .vscode/*

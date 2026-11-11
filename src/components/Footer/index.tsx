@@ -1,6 +1,6 @@
 import { Mail, Phone } from "lucide-react";
 
-import logoMark from "../../assets/logo-mark.png";
+import logoMark from "../../assets/logo-mark.webp";
 import { useReveal } from "../../hooks/useReveal";
 import styles from "./style.module.scss";
 
@@ -39,9 +39,9 @@ export const Footer = () => {
         </div>
 
         <div className={styles.footer__contacts}>
-          <a href="tel:+74951234567" className={styles.footer__contactLink}>
+          <a href="tel:+74912300088" className={styles.footer__contactLink}>
             <Phone size={14} />
-            +7 (495) 123-45-67
+            +7 (4912) 30-00-88
           </a>
           <a
             href="mailto:info@liderkg.ru"
